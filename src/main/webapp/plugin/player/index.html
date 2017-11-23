@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>装修找阿亮-节目回顾</title>
+	<link rel="stylesheet" href="css/music.css">
+    <style>
+	.current{ background-color:#FC0}
+	</style>
+</head>
+<body class="blueHour">
+	<div class="container">
+		<div class="music-list">
+			<div class="title">装修找阿亮-节目单列表</div>
+			<div class="list">
+				<ul>
+					<li id="li_0"><a href="javascript:;"  onclick="playList(0)">装修找阿亮（建筑风水）</a></li>
+					<li id="li_1"><a href="javascript:;"  onclick="playList(1)">装修找阿亮（家装环保）</a></li>
+					<li id="li_2"><a href="javascript:;"  onclick="playList(2)">装修找阿亮 （硅藻使用）</a></li>
+					<li id="li_3"><a href="javascript:;"  onclick="playList(3)">装修找阿亮（电流专业）</a></li>
+					<li id="li_4"><a href="javascript:;"  onclick="playList(4)">装修找阿亮（听众咨询）</a></li>
+					<li id="li_5"><a href="javascript:;"  onclick="playList(5)">装修找阿亮 （橡木地板）</a></li>
+                    <li id="li_6"><a href="javascript:;" onclick="playList(6)">装修找阿亮 （装修痛点）</a></li>
+					<li id="li_7"><a href="javascript:;"  onclick="playList(7)">装修找阿亮（科勒卫浴）</a></li>
+                    <li id="li_8"><a href="javascript:;"  onclick="playList(8)">装修找阿亮 （民族品牌）</a></li>
+				</ul>
+			</div>
+		</div>
+		<audio id="audio">
+			<source title="装修找阿亮160510（建筑风水）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160510.mp3">
+			<source title="装修找阿亮160614（家装环保）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160614.mp3">
+			<source title="装修找阿亮160630 （硅藻使用）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160630.mp3">
+			<source title="装修找阿亮160706（电流专业）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160706.mp3">
+			<source title="装修找阿亮160706（听众咨询）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/16070601.mp3">
+			<source title="装修找阿亮160706 （橡木地板）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/16070602.mp3">
+            <source title="装修找阿亮160706 （装修痛点）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/16070603.mp3">
+            <source title="装修找阿亮160707（科勒卫浴）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160707.mp3">
+            <source title="装修找阿亮160718 （民族品牌）" data-img="http://wsypic.000e.com/other/20160719175036172.png" src="http://cs.qyxzds.com/test/FM107/sound/160718.mp3">
+		</audio>
+		<div class="music">
+			<div class="header">
+				<h1>装修找阿亮</h1>
+			</div>
+			<div class="fengmian">
+				<img src="img/music.png" id="music-img" alt="">
+			</div>
+			<div id="title">
+				。。。
+			</div>
+			<div class="jindu">
+				<span id="music-bar">
+					<span id="load-bar"></span>
+					<span id="played-bar"></span>
+				</span>
+				<span id="voice-bar">
+					<span id="voiced-bar"></span>
+				</span>
+				<div id="time">
+					<span id="current-time">0:00</span>
+					<span id="total-time"></span>
+				</div>
+			</div>
+			<div class="controls">
+				<a id="xunhuan" href="javascript:;">循环</a>
+				<a id="prev" href="javascript:;"><</a>
+				<a id="play" href="javascript:;">播放</a>
+				<a id="next" href="javascript:;">></a>
+				<a id="jingyin" href="javascript:;">静音</a>
+			</div>
+		</div>
+	</div>
+    <script>
+	  var currentSrcIndex = 6;
+	  
+	  
+	</script>
+	<script src="js/music.js"></script>
+    <script src="js/jquery-1.8.0.min.js"></script>
+    
+    
+	<script>
+		// 回调函数将返回的内容添加到结果区（需要在页面加载完后加载上，为后面执行回调）
+		function jsonpcallback (rs) {
+			var resultHtml = '歌曲：<strong>' + rs.result.songs[0].name + '</strong>' + 
+							 '歌手：<strong>' + rs.result.songs[0].artists[0].name + '</strong>' +
+							 '<a href="javascript:;" id="to-play">立即播放</a>';	
+			result.innerHTML = resultHtml;
+			result.setAttribute('data-audio', rs.result.songs[0].audio);
+			result.setAttribute('data-img', rs.result.songs[0].album.picUrl);
+			result.setAttribute('data-music', rs.result.songs[0].name);
+			result.setAttribute('data-singer', rs.result.songs[0].artists[0].name);
+			result.style.opacity = '1';
+
+		};
+		
+		function playList(index){
+			$(".list li").removeClass("current");
+			$("#li_"+index).addClass("current");
+			
+			currentSrcIndex = index;
+			sourceList = audio.getElementsByTagName('source');
+			musicImg = document.getElementById('music-img');
+			currentSrc = sourceList[currentSrcIndex].getAttribute('src');
+			currentImg = sourceList[currentSrcIndex].getAttribute('data-img')
+			musicImg.setAttribute('src', currentImg);
+			audio.setAttribute('src', currentSrc);
+			audio.play();
+			play.innerHTML = '暂停';
+			musicImg.style.animation = 'xuanzhuan 5s linear infinite';
+			musicTime();
+		}
+		
+		function musicTime() {
+		// 更换播放歌曲
+		totalTime = document.getElementById('total-time');
+		musicTitle = document.getElementById('title');
+		musicTitle.innerHTML = sourceList[currentSrcIndex].title;
+		// 播放时间显示
+		audio.addEventListener("canplay", function(){
+			var sc=audio.duration;
+
+			var fen = parseInt(sc / 60);
+			var miao = parseInt(sc % 60);
+			if (miao < 10) {
+				totalTime.innerHTML = fen + ':0' + miao;
+			}else {
+				totalTime.innerHTML = fen + ':' + miao;
+			}
+		});
+	};
+	</script>
+</body>
+</html>
